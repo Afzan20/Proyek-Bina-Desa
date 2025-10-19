@@ -1,222 +1,144 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Bina Desa</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sign in | Bina Desa</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('assets-template/img/favicon.png') }}">
+
+    <!-- Nucleo Icons CSS -->
+    <link type="text/css" href="{{ asset('assets-template/css/nucleo-icons.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('assets-template/css/nucleo-svg.css') }}" rel="stylesheet">
+
+    <!-- Soft UI Dashboard CSS -->
+    <link type="text/css" href="{{ asset('assets-template/css/soft-ui-dashboard.css') }}" rel="stylesheet">
+
     <style>
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        body, html {
+            height: 100%;
+        }
+
+        .vh-lg-100 {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            justify-content: center;
         }
 
-        .login-container {
-            animation: slideUp 0.5s ease-out;
+        .login-card {
+            max-width: 450px;
+            margin: 0 auto;
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .card {
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
-
-        .card-header {
+        .bg-soft {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            padding: 2.5rem 1.5rem;
-            text-align: center;
-            color: white;
-        }
-
-        .card-header h1 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
-
-        .card-header p {
-            margin-bottom: 0;
-            opacity: 0.95;
-            font-size: 0.875rem;
-        }
-
-        .card-body {
-            padding: 2.5rem;
-        }
-
-        .form-label {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .input-group {
-            margin-bottom: 1rem;
-        }
-
-        .input-group-text {
-            background-color: #f8f9fa;
-            border-right: none;
-            color: #667eea;
-        }
-
-        .form-control {
-            border-left: none;
-            padding: 0.75rem 1rem;
-        }
-
-        .form-control:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
-        }
-
-        .input-group:focus-within .input-group-text {
-            border-color: #667eea;
-        }
-
-        .btn-login {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            padding: 0.75rem;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .btn-login:active {
-            transform: translateY(0);
-        }
-
-        .form-check-input:checked {
-            background-color: #667eea;
-            border-color: #667eea;
-        }
-
-        .forgot-password {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.875rem;
-        }
-
-        .forgot-password:hover {
-            text-decoration: underline;
-            color: #764ba2;
-        }
-
-        .alert {
-            border-radius: 10px;
-            border: none;
-        }
-
-        .invalid-feedback {
-            font-size: 0.875rem;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-5 col-lg-4 login-container">
-                <div class="card">
-                    <div class="card-header">
-                        <h1><i class="fas fa-home"></i> Bina Desa</h1>
-                        <p>Sistem Informasi Pembangunan Desa</p>
-                    </div>
 
-                    <div class="card-body">
-                        @if($errors->has('login'))
-                        <div class="alert alert-danger" role="alert">
-                            <i class="fas fa-exclamation-circle me-2"></i>
-                            <strong>Login Gagal!</strong> {{ $errors->first('login') }}
+<body class="bg-soft">
+    <main>
+        <!-- Section -->
+        <section class="vh-lg-100">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                        <div class="bg-white shadow border-0 rounded border-light p-4 p-lg-5 login-card">
+                            <div class="text-center mb-4">
+                                <h1 class="mb-2 h3">Bina Desa</h1>
+                                <p class="text-muted mb-0">Sistem Informasi Pembangunan Desa</p>
+                            </div>
+
+                            @if(session('success'))
+                            <div class="alert alert-success d-flex align-items-center" role="alert">
+                                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                {{ session('success') }}
+                            </div>
+                            @endif
+
+                            @if(session('error'))
+                            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                                </svg>
+                                {{ session('error') }}
+                            </div>
+                            @endif
+
+                            <form action="{{ route('login.store') }}" method="POST" class="mt-4">
+                                @csrf
+
+                                <!-- Username -->
+                                <div class="form-group mb-4">
+                                    <label for="username" class="form-label">Username</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                            </svg>
+                                        </span>
+                                        <input type="text" class="form-control @error('username') is-invalid @enderror"
+                                               placeholder="Username" id="username" name="username"
+                                               value="{{ old('username') }}" autofocus required>
+                                    </div>
+                                    @error('username')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <!-- Password -->
+                                <div class="form-group mb-4">
+                                    <label for="password" class="form-label">Password</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
+                                            </svg>
+                                        </span>
+                                        <input type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror"
+                                               id="password" name="password" required>
+                                    </div>
+                                    @error('password')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <!-- Button -->
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">Masuk</button>
+                                </div>
+                            </form>
+
+                            <!-- Register Link -->
+                            <div class="text-center mt-4">
+                                <span class="fw-normal text-muted">
+                                    Belum punya akun?
+                                    <a href="{{ route('login.register.form') }}" class="fw-bold text-primary">Registrasi di sini</a>
+                                </span>
+                            </div>
                         </div>
-                        @endif
-
-                        <form action="{{ route('login.store') }}" method="POST">
-                            @csrf
-
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">
-                                        <i class="fas fa-user"></i>
-                                    </span>
-                                    <input
-                                        type="text"
-                                        class="form-control @error('username') is-invalid @enderror"
-                                        id="username"
-                                        name="username"
-                                        value="{{ old('username') }}"
-                                        placeholder="Masukkan username"
-                                        autofocus
-                                    >
-                                </div>
-                                @error('username')
-                                <div class="text-danger small mt-1">
-                                    <i class="fas fa-exclamation-triangle me-1"></i>{{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">
-                                        <i class="fas fa-lock"></i>
-                                    </span>
-                                    <input
-                                        type="password"
-                                        class="form-control @error('password') is-invalid @enderror"
-                                        id="password"
-                                        name="password"
-                                        placeholder="Masukkan password"
-                                    >
-                                </div>
-                                @error('password')
-                                <div class="text-danger small mt-1">
-                                    <i class="fas fa-exclamation-triangle me-1"></i>{{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-
-                            <div class="alert alert-info small mb-4" role="alert">
-                                <i class="fas fa-info-circle me-2"></i>
-                                <strong>Info:</strong> Username dan password Wajib Diisi.
-                            </div>
-
-                            <button type="submit" class="btn btn-primary btn-login w-100">
-                                <i class="fas fa-sign-in-alt me-2"></i> Masuk
-                            </button>
-                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core JS Files -->
+    <script src="{{ asset('assets-template/js/core/popper.min.js') }}"></script>
+    <script src="{{ asset('assets-template/js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets-template/js/plugins/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('assets-template/js/plugins/smooth-scrollbar.min.js') }}"></script>
+
+    <!-- Control Center -->
+    <script src="{{ asset('assets-template/js/soft-ui-dashboard.min.js') }}"></script>
 </body>
+
 </html>

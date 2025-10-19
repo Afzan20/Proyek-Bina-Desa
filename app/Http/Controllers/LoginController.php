@@ -15,6 +15,11 @@ class LoginController extends Controller
         return view('LoginForm');
     }
 
+     public function registerForm()
+    {
+        return view('Register');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -26,11 +31,11 @@ class LoginController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function login(Request $request)
     {
         $request->validate([
             'username' => 'required|max:10',
-            'password' => ['required', 'string', Password::min(3)],
+            'password' => ['required', 'string', Password::min(6)],
         ],[
             'username.required' => 'Username wajib diisi',
             'password.required' => 'Password wajib diisi',
@@ -42,10 +47,31 @@ class LoginController extends Controller
             return redirect('/login/success');
         }
 
-        // Jika username dan password tidak sama
         return redirect('/login')
             ->withErrors(['login' => 'Username dan password harus memiliki nilai yang sama'])
             ->withInput();
+    }
+
+     public function register(Request $request)
+    {
+        // Validasi input
+        $request -> validate([
+            'nama' => 'required|max:50',
+            'alamat' => 'required|max:300',
+            'tanggal_lahir' => 'required|date',
+            'username' => 'required|min:3',
+            'password' => ['required', 'String', Password::min(6)],
+            'confirm_password' => 'required|same:password'
+        ], [
+            'nama.required' => 'Nama tidak boleh mengandung angka',
+            'alamat.max' => 'Alamat maksimal 300 karakter',
+            'tanggal_lahir.date' => 'Tanggal lahir harus berupa tanggal yang valid',
+            'password.required' => 'Password minimal harus 6 karakter',
+            'confirm_password.same' => 'Password dan Confirm Password tidak sama'
+        ]);
+
+        return redirect('/login')
+            ->with('success', 'Registrasi berhasil! Silakan Login');
     }
 
     /**

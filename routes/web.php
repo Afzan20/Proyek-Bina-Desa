@@ -12,14 +12,17 @@ Route::get('/home',[HomeController::class, 'index'])->name('home.index');
 
 Route::get('/login',[LoginController::class, 'index'])->name('login.index');
 
-Route::post('login/store',[LoginController::class, 'store'])
+Route::post('login/store',[LoginController::class, 'login'])
 ->name ('login.store');
 
 Route::get('/login/success', function () {
-    // Cek apakah user sudah login
     if (!session()->has('user')) {
         return redirect('/login');
     }
 
     return view('Login-Success');
 });
+
+Route::get('/register', [LoginController::class, 'registerForm'])->name('login.register.form');
+Route::post('/register', [LoginController::class, 'register'])->name('login.register');
+Route::resource('kategori_aset', KategoriAset_Controller::class);
