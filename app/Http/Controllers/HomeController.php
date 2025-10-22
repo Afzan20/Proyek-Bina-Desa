@@ -11,106 +11,106 @@ class HomeController extends Controller
      */
     public function index()
     {
-         $kategoriAset = [
-            [
-                'kategori_id' => 1,
-                'nama' => 'Elektronik',
-                'kode' => 'ELK',
-                'deskripsi' => 'Perangkat elektronik dan teknologi'
-            ],
-            [
-                'kategori_id' => 2,
-                'nama' => 'Furniture',
-                'kode' => 'FUR',
-                'deskripsi' => 'Perabotan kantor'
-            ],
-            [
-                'kategori_id' => 3,
-                'nama' => 'Kendaraan',
-                'kode' => 'KND',
-                'deskripsi' => 'Kendaraan operasional'
-            ]
-        ];
+        //  $kategoriAset = [
+        //     [
+        //         'kategori_id' => 1,
+        //         'nama' => 'Elektronik',
+        //         'kode' => 'ELK',
+        //         'deskripsi' => 'Perangkat elektronik dan teknologi'
+        //     ],
+        //     [
+        //         'kategori_id' => 2,
+        //         'nama' => 'Furniture',
+        //         'kode' => 'FUR',
+        //         'deskripsi' => 'Perabotan kantor'
+        //     ],
+        //     [
+        //         'kategori_id' => 3,
+        //         'nama' => 'Kendaraan',
+        //         'kode' => 'KND',
+        //         'deskripsi' => 'Kendaraan operasional'
+        //     ]
+        // ];
 
-        $aset = [
-            [
-                'aset_id' => 1,
-                'kategori_id' => 1,
-                'kategori_nama' => 'Elektronik',
-                'kode_aset' => 'ELK001',
-                'nama_aset' => 'Laptop Dell Inspiron 15',
-                'tgl_perolehan' => '2024-01-15',
-                'nilai_perolehan' => 8500000.00,
-                'kondisi' => 'baik'
-            ],
-            [
-                'aset_id' => 2,
-                'kategori_id' => 2,
-                'kategori_nama' => 'Furniture',
-                'kode_aset' => 'FUR001',
-                'nama_aset' => 'Meja Kantor Executive',
-                'tgl_perolehan' => '2024-02-10',
-                'nilai_perolehan' => 1200000.00,
-                'kondisi' => 'baik'
-            ],
-            [
-                'aset_id' => 3,
-                'kategori_id' => 1,
-                'kategori_nama' => 'Elektronik',
-                'kode_aset' => 'ELK002',
-                'nama_aset' => 'Printer Canon Pixma',
-                'tgl_perolehan' => '2023-12-05',
-                'nilai_perolehan' => 2500000.00,
-                'kondisi' => 'rusak ringan'
-            ],
-            [
-                'aset_id' => 4,
-                'kategori_id' => 2,
-                'kategori_nama' => 'Furniture',
-                'kode_aset' => 'FUR002',
-                'nama_aset' => 'Kursi Kantor Ergonomis',
-                'tgl_perolehan' => '2024-03-01',
-                'nilai_perolehan' => 750000.00,
-                'kondisi' => 'baik'
-            ],
-            [
-                'aset_id' => 5,
-                'kategori_id' => 3,
-                'kategori_nama' => 'Kendaraan',
-                'kode_aset' => 'KND001',
-                'nama_aset' => 'Toyota Avanza',
-                'tgl_perolehan' => '2023-06-15',
-                'nilai_perolehan' => 180000000.00,
-                'kondisi' => 'baik'
-            ]
-        ];
+        // $aset = [
+        //     [
+        //         'aset_id' => 1,
+        //         'kategori_id' => 1,
+        //         'kategori_nama' => 'Elektronik',
+        //         'kode_aset' => 'ELK001',
+        //         'nama_aset' => 'Laptop Dell Inspiron 15',
+        //         'tgl_perolehan' => '2024-01-15',
+        //         'nilai_perolehan' => 8500000.00,
+        //         'kondisi' => 'baik'
+        //     ],
+        //     [
+        //         'aset_id' => 2,
+        //         'kategori_id' => 2,
+        //         'kategori_nama' => 'Furniture',
+        //         'kode_aset' => 'FUR001',
+        //         'nama_aset' => 'Meja Kantor Executive',
+        //         'tgl_perolehan' => '2024-02-10',
+        //         'nilai_perolehan' => 1200000.00,
+        //         'kondisi' => 'baik'
+        //     ],
+        //     [
+        //         'aset_id' => 3,
+        //         'kategori_id' => 1,
+        //         'kategori_nama' => 'Elektronik',
+        //         'kode_aset' => 'ELK002',
+        //         'nama_aset' => 'Printer Canon Pixma',
+        //         'tgl_perolehan' => '2023-12-05',
+        //         'nilai_perolehan' => 2500000.00,
+        //         'kondisi' => 'rusak ringan'
+        //     ],
+        //     [
+        //         'aset_id' => 4,
+        //         'kategori_id' => 2,
+        //         'kategori_nama' => 'Furniture',
+        //         'kode_aset' => 'FUR002',
+        //         'nama_aset' => 'Kursi Kantor Ergonomis',
+        //         'tgl_perolehan' => '2024-03-01',
+        //         'nilai_perolehan' => 750000.00,
+        //         'kondisi' => 'baik'
+        //     ],
+        //     [
+        //         'aset_id' => 5,
+        //         'kategori_id' => 3,
+        //         'kategori_nama' => 'Kendaraan',
+        //         'kode_aset' => 'KND001',
+        //         'nama_aset' => 'Toyota Avanza',
+        //         'tgl_perolehan' => '2023-06-15',
+        //         'nilai_perolehan' => 180000000.00,
+        //         'kondisi' => 'baik'
+        //     ]
+        // ];
 
-        $lokasiAset = [
-            [
-                'lokasi_id' => 1,
-                'aset_id' => 1,
-                'keterangan' => 'Ruang Sekretaris',
-                'lokasi_text' => 'Kantor Desa',
-                'rt' => '001',
-                'rw' => '001'
-            ],
-            [
-                'lokasi_id' => 2,
-                'aset_id' => 2,
-                'keterangan' => 'Ruang Kades',
-                'lokasi_text' => 'Kantor Desa',
-                'rt' => '002',
-                'rw' => '001'
-            ],
-            [
-                'lokasi_id' => 3,
-                'aset_id' => 3,
-                'keterangan' => 'Ruang Sekretaris',
-                'lokasi_text' => 'Kantor Desa',
-                'rt' => '001',
-                'rw' => '002'
-            ]
-        ];
+        // $lokasiAset = [
+        //     [
+        //         'lokasi_id' => 1,
+        //         'aset_id' => 1,
+        //         'keterangan' => 'Ruang Sekretaris',
+        //         'lokasi_text' => 'Kantor Desa',
+        //         'rt' => '001',
+        //         'rw' => '001'
+        //     ],
+        //     [
+        //         'lokasi_id' => 2,
+        //         'aset_id' => 2,
+        //         'keterangan' => 'Ruang Kades',
+        //         'lokasi_text' => 'Kantor Desa',
+        //         'rt' => '002',
+        //         'rw' => '001'
+        //     ],
+        //     [
+        //         'lokasi_id' => 3,
+        //         'aset_id' => 3,
+        //         'keterangan' => 'Ruang Sekretaris',
+        //         'lokasi_text' => 'Kantor Desa',
+        //         'rt' => '001',
+        //         'rw' => '002'
+        //     ]
+        // ];
 
         $pemeliharaanAset = [
             [
@@ -132,24 +132,24 @@ class HomeController extends Controller
         ];
 
         // Data mutasi_aset
-        $mutasiAset = [
-            [
-                'mutasi_id' => 1,
-                'aset_id' => 2,
-                'tanggal' => '2024-03-15',
-                'jenis_mutasi' => 'pindah',
-                'keterangan' => 'Dipindah ke ruang direktur'
-            ],
-            [
-                'mutasi_id' => 2,
-                'aset_id' => 3,
-                'tanggal' => '2024-04-10',
-                'jenis_mutasi' => 'perbaikan',
-                'keterangan' => 'Perbaikan head printer'
-            ]
-        ];
+        // $mutasiAset = [
+        //     [
+        //         'mutasi_id' => 1,
+        //         'aset_id' => 2,
+        //         'tanggal' => '2024-03-15',
+        //         'jenis_mutasi' => 'pindah',
+        //         'keterangan' => 'Dipindah ke ruang direktur'
+        //     ],
+        //     [
+        //         'mutasi_id' => 2,
+        //         'aset_id' => 3,
+        //         'tanggal' => '2024-04-10',
+        //         'jenis_mutasi' => 'perbaikan',
+        //         'keterangan' => 'Perbaikan head printer'
+        //     ]
+        // ];
 
-        // Statistik
+        // // Statistik
         $totalAset = 193950000;
         $totalJumlahAset = 5;
         $kategoriStats = [
@@ -163,64 +163,16 @@ class HomeController extends Controller
             'rusak berat' => 0
         ];
 
-        return view('inventaris', [
-            'kategoriAset' => $kategoriAset,
-            'aset' => $aset,
-            'lokasiAset' => $lokasiAset,
+        return view('admin/dashboard', [
+            // 'kategoriAset' => $kategoriAset,
+            // 'aset' => $aset,
+            // 'lokasiAset' => $lokasiAset,
             'pemeliharaanAset' => $pemeliharaanAset,
-            'mutasiAset' => $mutasiAset,
+            // 'mutasiAset' => $mutasiAset,
             'totalAset' => $totalAset,
             'totalJumlahAset' => $totalJumlahAset,
             'kategoriStats' => $kategoriStats,
             'kondisiStats' => $kondisiStats
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

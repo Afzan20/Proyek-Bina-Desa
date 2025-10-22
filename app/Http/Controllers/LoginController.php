@@ -3,106 +3,82 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 use Illuminate\Validation\Rules\Password;
 
 class LoginController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // 🔹 Halaman login
     public function index()
     {
-        return view('LoginForm');
+        return view('admin.auth.login');
     }
 
-     public function registerForm()
+    // 🔹 Halaman register
+    public function registerForm()
     {
-        return view('Register');
+        return view('admin.auth.register');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+    // 🔹 Proses login
     public function login(Request $request)
     {
         $request->validate([
-            'username' => 'required|max:10',
-            'password' => ['required', 'string', Password::min(6)],
-        ],[
-            'username.required' => 'Username wajib diisi',
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+        ], [
+            'email.required' => 'Email wajib diisi',
+            'email.email' => 'Format email tidak valid',
             'password.required' => 'Password wajib diisi',
+            'password.min' => 'Password minimal 6 karakter',
         ]);
 
-        if ($request->username === $request->password) {
-            session(['user' => $request->username]);
+        $user = User::where('email', $request->email)->first();
 
-            return redirect('/login/success');
+        if ($user && Hash::check($request->password, $user->password)) {
+            session([
+                'user_id' => $user->id,
+                'user_name' => $user->name,
+                'user_email' => $user->email
+            ]);
+
+            // 🔸 Langsung ke halaman home.index
+            return redirect()->route('home.index')->with('success', 'Selamat datang, ' . $user->name . '!');
         }
 
-        return redirect('/login')
-            ->withErrors(['login' => 'Username dan password harus memiliki nilai yang sama'])
-            ->withInput();
+        return back()->withErrors(['password' => 'Email atau password salah'])->withInput();
     }
 
-     public function register(Request $request)
+    // 🔹 Proses register
+    public function register(Request $request)
     {
-        // Validasi input
-        $request -> validate([
-            'nama' => 'required|max:50',
-            'alamat' => 'required|max:300',
-            'tanggal_lahir' => 'required|date',
-            'username' => 'required|min:3',
-            'password' => ['required', 'String', Password::min(6)],
-            'confirm_password' => 'required|same:password'
+        $request->validate([
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|unique:users,email',
+            'password' => ['required', 'confirmed', Password::min(6)->letters()->mixedCase()->numbers()],
         ], [
-            'nama.required' => 'Nama tidak boleh mengandung angka',
-            'alamat.max' => 'Alamat maksimal 300 karakter',
-            'tanggal_lahir.date' => 'Tanggal lahir harus berupa tanggal yang valid',
-            'password.required' => 'Password minimal harus 6 karakter',
-            'confirm_password.same' => 'Password dan Confirm Password tidak sama'
+            'name.required' => 'Nama wajib diisi',
+            'email.required' => 'Email wajib diisi',
+            'email.unique' => 'Email sudah digunakan',
+            'password.required' => 'Password wajib diisi',
+            'password.confirmed' => 'Konfirmasi password tidak sesuai',
+            'password.min' => 'Password minimal 6 karakter dan harus mengandung huruf besar, kecil, dan angka',
         ]);
 
-        return redirect('/login')
-            ->with('success', 'Registrasi berhasil! Silakan Login');
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('login.index')->with('success', 'Registrasi berhasil! Silakan login.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    // 🔹 Logout
+    public function logout()
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        session()->forget(['user_id', 'user_name', 'user_email']);
+        return redirect()->route('login.index')->with('success', 'Anda telah logout.');
     }
 }
