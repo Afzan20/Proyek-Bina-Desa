@@ -1,8 +1,8 @@
 @extends('admin.layout.app')
 
-@section('title', 'Edit User | Proyek Bina Desa')
-@section('page', 'User')
-@section('page-title', 'Edit User')
+@section('title', 'Index Data Lokasi | Proyek Bina Desa')
+@section('page', 'Lokasi Aset')
+@section('page-title', 'Index Data Lokasi')
 
 @section('content')
 

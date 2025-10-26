@@ -1,6 +1,8 @@
 @extends('admin.layout.app')
 
-@section('title', 'Detail Aset')
+@section('title', 'Show Detail Aset | Proyek Bina Desa')
+@section('page', 'Aset')
+@section('page-title', 'Show Detail Aset')
 
 @section('content')
 <div class="container mt-4">

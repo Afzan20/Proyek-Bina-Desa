@@ -1,11 +1,15 @@
 @extends('admin.layout.app')
 
-@section('title', 'Edit User | Proyek Bina Desa')
-@section('page', 'User')
-@section('page-title', 'Edit User')
+@section('title', 'Index Mutasi | Proyek Bina Desa')
+@section('page', 'Mutasi Aset')
+@section('page-title', 'Index Mutasi')
 
 @section('content')
 <div class="container-fluid py-4">
+
+@section('title', 'Index Mutasi | Proyek Bina Desa')
+@section('page', 'Mutasi')
+@section('page-title', 'Index Mutasi')
 
     <!-- Tombol Tambah Data -->
     <div class="d-flex justify-content-between align-items-center mb-3">

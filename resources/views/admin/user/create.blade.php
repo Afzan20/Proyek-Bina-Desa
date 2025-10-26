@@ -1,8 +1,8 @@
 @extends('admin.layout.app')
 
-@section('title', 'Tambah User | Proyek Bina Desa')
+@section('title', 'Create User | Proyek Bina Desa')
 @section('page', 'User')
-@section('page-title', 'Tambah User')
+@section('page-title', 'Create User')
 
 @section('content')
 <div class="card">

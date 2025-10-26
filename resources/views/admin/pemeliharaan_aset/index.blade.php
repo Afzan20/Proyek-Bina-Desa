@@ -1,8 +1,8 @@
 @extends('admin.layout.app')
 
-@section('title', 'Edit User | Proyek Bina Desa')
-@section('page', 'User')
-@section('page-title', 'Edit User')
+@section('title', 'Index Data Pemeliharaan Aset | Proyek Bina Desa')
+@section('page', 'Pemeliharaan Aset')
+@section('page-title', 'Index Data Pemeliharaan Aset')
 
 @section('content')
 <div class="container-fluid py-4">

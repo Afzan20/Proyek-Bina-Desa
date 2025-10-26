@@ -1,5 +1,9 @@
 @extends('admin.layout.app')
 
+@section('title', 'Create Data Warga | Proyek Bina Desa')
+@section('page', 'Warga')
+@section('page-title', 'Create Data Warga')
+
 @section('content')
 <div class="container-fluid py-4">
 
