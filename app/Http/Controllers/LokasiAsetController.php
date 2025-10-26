@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\LokasiAset;
 use App\Models\Aset;
+use App\Models\Media;
+use App\Models\LokasiAset;
 use Illuminate\Http\Request;
 
 class LokasiAsetController extends Controller
@@ -31,13 +32,17 @@ class LokasiAsetController extends Controller
         ]);
 
         LokasiAset::create($request->all());
-        return redirect()->route('lokasi-aset.index')->with('success', 'Lokasi aset berhasil ditambahkan');
+        return redirect()->route('lokasi_aset.index')->with('success', 'Lokasi aset berhasil ditambahkan');
     }
 
     public function show($id)
     {
-        $lokasi = LokasiAset::with('aset')->findOrFail($id);
-        return view('admin.lokasi_aset.show', compact('lokasi'));
+        $lokasiAset = LokasiAset::with('aset')->findOrFail($id);
+        $mediaLokasi = Media::where('ref_table', 'lokasi_aset')
+                        ->where('ref_id', $id)
+                        ->get();
+
+        return view('admin.lokasi_aset.show', compact('lokasiAset', 'mediaLokasi'));
     }
 
     public function edit($id)
@@ -59,13 +64,13 @@ class LokasiAsetController extends Controller
         ]);
 
         $lokasi->update($request->all());
-        return redirect()->route('lokasi-aset.index')->with('success', 'Lokasi aset berhasil diperbarui');
+        return redirect()->route('lokasi_aset.index')->with('success', 'Lokasi aset berhasil diperbarui');
     }
 
     public function destroy($id)
     {
         $lokasi = LokasiAset::findOrFail($id);
         $lokasi->delete();
-        return redirect()->route('lokasi-aset.index')->with('success', 'Lokasi aset berhasil dihapus');
+        return redirect()->route('lokasi_aset.index')->with('success', 'Lokasi aset berhasil dihapus');
     }
 }

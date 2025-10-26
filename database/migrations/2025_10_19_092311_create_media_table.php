@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->increments('media_id');
-            $table->string('path'); // lokasi file
-            $table->string('model_type'); // tipe model (contoh: 'aset', 'lokasi_aset', 'pemeliharaan_aset')
-            $table->unsignedBigInteger('model_id'); // ID dari model terkait
+            $table->string('ref_table');
+            $table->string('ref_id');
+            $table->string('file_url');
+            $table->string('caption');
+            $table->string('mime_type');
+            $table->string('sort_order');
             $table->timestamps();
-
-            $table->index(['model_type', 'model_id']);
         });
     }
 

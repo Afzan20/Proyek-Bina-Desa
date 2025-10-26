@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Aset;
+use App\Models\KategoriAset;
+use App\Models\PemeliharaanAset;
+use App\Models\MutasiAset;
 
 class HomeController extends Controller
 {
@@ -112,24 +116,24 @@ class HomeController extends Controller
         //     ]
         // ];
 
-        $pemeliharaanAset = [
-            [
-                'pemeliharaan_id' => 1,
-                'aset_id' => 1,
-                'tanggal' => '2024-06-15',
-                'tindakan' => 'Pembersihan dan update software',
-                'biaya' => 150000.00,
-                'pelaksana' => 'Tim IT'
-            ],
-            [
-                'pemeliharaan_id' => 2,
-                'aset_id' => 5,
-                'tanggal' => '2024-05-20',
-                'tindakan' => 'Service rutin dan ganti oli',
-                'biaya' => 500000.00,
-                'pelaksana' => 'Bengkel Resmi'
-            ]
-        ];
+        // $pemeliharaanAset = [
+        //     [
+        //         'pemeliharaan_id' => 1,
+        //         'aset_id' => 1,
+        //         'tanggal' => '2024-06-15',
+        //         'tindakan' => 'Pembersihan dan update software',
+        //         'biaya' => 150000.00,
+        //         'pelaksana' => 'Tim IT'
+        //     ],
+        //     [
+        //         'pemeliharaan_id' => 2,
+        //         'aset_id' => 5,
+        //         'tanggal' => '2024-05-20',
+        //         'tindakan' => 'Service rutin dan ganti oli',
+        //         'biaya' => 500000.00,
+        //         'pelaksana' => 'Bengkel Resmi'
+        //     ]
+        // ];
 
         // Data mutasi_aset
         // $mutasiAset = [
@@ -149,30 +153,20 @@ class HomeController extends Controller
         //     ]
         // ];
 
-        // // Statistik
-        $totalAset = 193950000;
-        $totalJumlahAset = 5;
-        $kategoriStats = [
-            'Elektronik' => 2,
-            'Furniture' => 2,
-            'Kendaraan' => 1
-        ];
-        $kondisiStats = [
-            'baik' => 4,
-            'rusak ringan' => 1,
-            'rusak berat' => 0
-        ];
+         // Ambil data dari database
+        $totalAset = Aset::sum('nilai_perolehan'); // total nilai aset
+        $totalJumlahAset = Aset::count();          // jumlah baris aset
+        $totalKategori = KategoriAset::count();    // jumlah kategori
+        $totalPemeliharaan = PemeliharaanAset::count(); // jumlah pemeliharaan
+        $totalMutasiAset = MutasiAset::count(); // jumlaj mutasi
 
-        return view('admin/dashboard', [
-            // 'kategoriAset' => $kategoriAset,
-            // 'aset' => $aset,
-            // 'lokasiAset' => $lokasiAset,
-            'pemeliharaanAset' => $pemeliharaanAset,
-            // 'mutasiAset' => $mutasiAset,
+        // Kirim ke view
+        return view('admin.dashboard', [
             'totalAset' => $totalAset,
             'totalJumlahAset' => $totalJumlahAset,
-            'kategoriStats' => $kategoriStats,
-            'kondisiStats' => $kondisiStats
+            'totalKategori' => $totalKategori,
+            'totalPemeliharaan' => $totalPemeliharaan,
+            'totalMutasiAset' => $totalMutasiAset,
         ]);
     }
 }

@@ -19,4 +19,8 @@ class PemeliharaanAset extends Model
     {
         return $this->belongsTo(Aset::class, 'aset_id', 'aset_id');
     }
+
+    public function media(){
+        return $this->hasMany(Media::class, 'ref_id', 'pemeliharaan_id') ->where('ref_table', 'pemeliharaan_aset');
+    }
 }

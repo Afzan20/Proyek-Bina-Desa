@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AsetController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\WargaController;
 use App\Http\Controllers\LokasiAsetController;
 use App\Http\Controllers\MutasiAsetController;
 use App\Http\Controllers\KategoriAsetController;
@@ -22,9 +24,7 @@ Route::post('/register', [LoginController::class, 'register'])->name('login.regi
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Route untuk home
-Route::get('/home', function () {
-    return view('admin/dashboard');
-})->name('home.index');
+Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 
 Route::get('/register', [LoginController::class, 'registerForm'])->name('login.register.form');
 Route::post('/register', [LoginController::class, 'register'])->name('login.register');
@@ -33,3 +33,5 @@ Route::resource('kategori_aset', KategoriAsetController::class);
 Route::resource('lokasi_aset', LokasiAsetController::class);
 Route::resource('pemeliharaan_aset', PemeliharaanAsetController::class);
 Route::resource('mutasi_aset', MutasiAsetController::class);
+Route::resource('user', UserController::class);
+Route::resource('warga', WargaController::class);

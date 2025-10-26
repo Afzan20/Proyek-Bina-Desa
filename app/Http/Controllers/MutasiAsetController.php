@@ -30,7 +30,7 @@ class MutasiAsetController extends Controller
         ]);
 
         MutasiAset::create($request->all());
-        return redirect()->route('mutasi-aset.index')->with('success', 'Mutasi aset berhasil ditambahkan');
+        return redirect()->route('mutasi_aset.index')->with('success', 'Mutasi aset berhasil ditambahkan');
     }
 
     public function show($id)
@@ -57,13 +57,13 @@ class MutasiAsetController extends Controller
         ]);
 
         $mutasi->update($request->all());
-        return redirect()->route('mutasi-aset.index')->with('success', 'Mutasi aset berhasil diperbarui');
+        return redirect()->route('mutasi_aset.index')->with('success', 'Mutasi aset berhasil diperbarui');
     }
 
     public function destroy($id)
     {
         $mutasi = MutasiAset::findOrFail($id);
         $mutasi->delete();
-        return redirect()->route('mutasi-aset.index')->with('success', 'Mutasi aset berhasil dihapus');
+        return redirect()->route('mutasi_aset.index')->with('success', 'Mutasi aset berhasil dihapus');
     }
 }

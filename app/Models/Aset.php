@@ -35,4 +35,9 @@ class Aset extends Model
     {
         return $this->hasMany(MutasiAset::class, 'aset_id', 'aset_id');
     }
+
+    public function media(){
+        return $this->hasMany(Media::class, 'ref_id', 'aset_id')->where('ref_table', 'aset');
+    }
+
 }

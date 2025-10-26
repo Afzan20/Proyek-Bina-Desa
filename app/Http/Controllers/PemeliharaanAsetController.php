@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PemeliharaanAset;
 use App\Models\Aset;
+use App\Models\Media;
 use Illuminate\Http\Request;
+use App\Models\PemeliharaanAset;
 
 class PemeliharaanAsetController extends Controller
 {
@@ -31,13 +32,17 @@ class PemeliharaanAsetController extends Controller
         ]);
 
         PemeliharaanAset::create($request->all());
-        return redirect()->route('pemeliharaan-aset.index')->with('success', 'Data pemeliharaan berhasil ditambahkan');
+        return redirect()->route('pemeliharaan_aset.index')->with('success', 'Data pemeliharaan berhasil ditambahkan');
     }
 
     public function show($id)
     {
         $pemeliharaan = PemeliharaanAset::with('aset')->findOrFail($id);
-        return view('admin.pemeliharaan_aset.show', compact('pemeliharaan'));
+        $mediaPemeliharaan = Media::where('ref_table', 'pemeliharaan_aset')
+                            ->where('ref_id', $id)
+                            ->get();
+
+        return view('admin.pemeliharaan_aset.show', compact('pemeliharaan', 'mediaPemeliharaan'));
     }
 
     public function edit($id)
@@ -59,13 +64,13 @@ class PemeliharaanAsetController extends Controller
         ]);
 
         $pemeliharaan->update($request->all());
-        return redirect()->route('pemeliharaan-aset.index')->with('success', 'Data pemeliharaan berhasil diperbarui');
+        return redirect()->route('pemeliharaan_aset.index')->with('success', 'Data pemeliharaan berhasil diperbarui');
     }
 
     public function destroy($id)
     {
         $pemeliharaan = PemeliharaanAset::findOrFail($id);
         $pemeliharaan->delete();
-        return redirect()->route('pemeliharaan-aset.index')->with('success', 'Data pemeliharaan berhasil dihapus');
+        return redirect()->route('pemeliharaan_aset.index')->with('success', 'Data pemeliharaan berhasil dihapus');
     }
 }

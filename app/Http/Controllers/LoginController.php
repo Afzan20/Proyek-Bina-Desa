@@ -66,6 +66,12 @@ class LoginController extends Controller
             'password.min' => 'Password minimal 6 karakter dan harus mengandung huruf besar, kecil, dan angka',
         ]);
 
+         $user = User::where('email', $request->email)->first();
+
+        if ($user) {
+        return back()->withErrors(['email' => 'Email sudah digunakan'])->withInput();
+        }
+
         User::create([
             'name' => $request->name,
             'email' => $request->email,
