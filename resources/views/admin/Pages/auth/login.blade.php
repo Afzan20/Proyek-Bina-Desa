@@ -272,7 +272,7 @@
         right: 25px;
         width: 60px;
         height: 60px;
-        background-color: #25D366;
+        background-color: #fcfcfc;
         border-radius: 50%;
         display: flex;
         align-items: center;
