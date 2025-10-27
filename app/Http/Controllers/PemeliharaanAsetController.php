@@ -12,13 +12,13 @@ class PemeliharaanAsetController extends Controller
     public function index()
     {
         $data = PemeliharaanAset::with('aset')->get();
-        return view('admin.pemeliharaan_aset.index', compact('data'));
+        return view('admin.pages.pemeliharaan_aset.index', compact('data'));
     }
 
     public function create()
     {
         $aset = Aset::all();
-        return view('admin.pemeliharaan_aset.create', compact('aset'));
+        return view('admin.pages.pemeliharaan_aset.create', compact('aset'));
     }
 
     public function store(Request $request)
@@ -42,14 +42,14 @@ class PemeliharaanAsetController extends Controller
                             ->where('ref_id', $id)
                             ->get();
 
-        return view('admin.pemeliharaan_aset.show', compact('pemeliharaan', 'mediaPemeliharaan'));
+        return view('admin.pages.pemeliharaan_aset.show', compact('pemeliharaan', 'mediaPemeliharaan'));
     }
 
     public function edit($id)
     {
         $pemeliharaan = PemeliharaanAset::findOrFail($id);
         $aset = Aset::all();
-        return view('admin.pemeliharaan_aset.edit', compact('pemeliharaan', 'aset'));
+        return view('admin.pages.pemeliharaan_aset.edit', compact('pemeliharaan', 'aset'));
     }
 
     public function update(Request $request, $id)

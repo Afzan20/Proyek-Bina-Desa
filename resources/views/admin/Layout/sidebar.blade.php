@@ -16,24 +16,22 @@
 
     <div class="collapse navbar-collapse w-auto h-auto overflow-visible" id="sidenav-collapse-main">
         <ul class="navbar-nav">
+            <!-- Dashboard -->
             <li class="nav-item">
                 <a class="nav-link text-white {{ request()->routeIs('home.index') ? 'active bg-gradient-primary' : '' }}"
                     href="{{ route('home.index') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Dashboard</span>
+                    <span class="nav-link-text ms-1 fw-bold">Dashboard</span>
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a href="{{ route('warga.index') }}"
-                    class="nav-link text-white {{ request()->routeIs('warga.*') ? 'active bg-gradient-primary' : '' }}">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-circle-08 text-info text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Warga</span>
-                </a>
+            <!-- Fitur Utama -->
+            <li class="nav-item mt-3">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">
+                    Fitur Utama
+                </h6>
             </li>
 
             <li class="nav-item">
@@ -86,22 +84,30 @@
                 </a>
             </li>
 
+            <!-- Master Data -->
+            <li class="nav-item mt-3">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">
+                    Master Data
+                </h6>
+            </li>
+
             <li class="nav-item">
                 <a href="{{ route('user.index') }}"
                     class="nav-link text-white {{ request()->routeIs('user.*') ? 'active bg-gradient-primary' : '' }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-single-02 text-success text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Daftar User</span>
+                    <span class="nav-link-text ms-1">User</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link text-white" href="{{ route('login.index') }}">
+                <a href="{{ route('warga.index') }}"
+                    class="nav-link text-white {{ request()->routeIs('warga.*') ? 'active bg-gradient-primary' : '' }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-button-power text-danger text-sm opacity-10"></i>
+                        <i class="ni ni-circle-08 text-info text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Logout</span>
+                    <span class="nav-link-text ms-1">Warga</span>
                 </a>
             </li>
         </ul>

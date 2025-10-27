@@ -11,13 +11,13 @@ class MutasiAsetController extends Controller
     public function index()
     {
         $data = MutasiAset::with('aset')->get();
-        return view('admin.mutasi_aset.index', compact('data'));
+        return view('admin.pages.mutasi_aset.index', compact('data'));
     }
 
     public function create()
     {
         $aset = Aset::all();
-        return view('admin.mutasi_aset.create', compact('aset'));
+        return view('admin.pages.mutasi_aset.create', compact('aset'));
     }
 
     public function store(Request $request)
@@ -36,14 +36,14 @@ class MutasiAsetController extends Controller
     public function show($id)
     {
         $mutasi = MutasiAset::with('aset')->findOrFail($id);
-        return view('admin.mutasi_aset.show', compact('mutasi'));
+        return view('admin.pages.mutasi_aset.show', compact('mutasi'));
     }
 
     public function edit($id)
     {
         $mutasi = MutasiAset::findOrFail($id);
         $aset = Aset::all();
-        return view('admin.mutasi_aset.edit', compact('mutasi', 'aset'));
+        return view('admin.pages.mutasi_aset.edit', compact('mutasi', 'aset'));
     }
 
     public function update(Request $request, $id)

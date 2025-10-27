@@ -11,13 +11,13 @@ class AsetController extends Controller{
     public function index()
     {
         $data = Aset::with('kategori')->get();
-        return view('admin.aset.index', compact('data'));
+        return view('admin.pages.aset.index', compact('data'));
     }
 
     public function create()
     {
         $kategori = KategoriAset::all();
-        return view('admin.aset.create', compact('kategori'));
+        return view('admin.pages.aset.create', compact('kategori'));
     }
 
     public function store(Request $request)
@@ -59,14 +59,14 @@ class AsetController extends Controller{
                       ->where('ref_id', $id)
                       ->get();
 
-        return view('admin.aset.show', compact('aset', 'mediaAset'));
+        return view('admin.pages.aset.show', compact('aset', 'mediaAset'));
     }
 
     public function edit($id)
     {
         $aset = Aset::findOrFail($id);
         $kategori = KategoriAset::all();
-        return view('admin.aset.edit', compact('aset', 'kategori'));
+        return view('admin.pages.aset.edit', compact('aset', 'kategori'));
     }
 
     public function update(Request $request, $id){

@@ -12,13 +12,13 @@ class LokasiAsetController extends Controller
     public function index()
     {
         $data = LokasiAset::with('aset')->get();
-        return view('admin.lokasi_aset.index', compact('data'));
+        return view('admin.pages.lokasi_aset.index', compact('data'));
     }
 
     public function create()
     {
         $aset = Aset::all();
-        return view('admin.lokasi_aset.create', compact('aset'));
+        return view('admin.pages.lokasi_aset.create', compact('aset'));
     }
 
     public function store(Request $request)
@@ -42,14 +42,14 @@ class LokasiAsetController extends Controller
                         ->where('ref_id', $id)
                         ->get();
 
-        return view('admin.lokasi_aset.show', compact('lokasiAset', 'mediaLokasi'));
+        return view('admin.pages.lokasi_aset.show', compact('lokasiAset', 'mediaLokasi'));
     }
 
     public function edit($id)
     {
         $lokasi = LokasiAset::findOrFail($id);
         $aset = Aset::all();
-        return view('admin.lokasi_aset.edit', compact('lokasi', 'aset'));
+        return view('admin.pages.lokasi_aset.edit', compact('lokasi', 'aset'));
     }
 
     public function update(Request $request, $id)

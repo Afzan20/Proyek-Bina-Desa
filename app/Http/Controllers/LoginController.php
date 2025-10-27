@@ -12,13 +12,13 @@ class LoginController extends Controller
     // 🔹 Halaman login
     public function index()
     {
-        return view('admin.auth.login');
+        return view('admin.pages.auth.login');
     }
 
     // 🔹 Halaman register
     public function registerForm()
     {
-        return view('admin.auth.register');
+        return view('admin.pages.auth.register');
     }
 
     // 🔹 Proses login

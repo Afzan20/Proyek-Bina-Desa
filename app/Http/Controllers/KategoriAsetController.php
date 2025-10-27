@@ -13,7 +13,7 @@ class KategoriAsetController extends Controller
     public function index()
     {
         $data = KategoriAset::all();
-        return view('admin.kategori_aset.index', compact('data'));
+        return view('admin.pages.kategori_aset.index', compact('data'));
     }
 
     /**
@@ -21,7 +21,7 @@ class KategoriAsetController extends Controller
      */
     public function create()
     {
-        return view('admin.kategori_aset.create');
+        return view('admin.pages.kategori_aset.create');
     }
 
     /**
@@ -47,7 +47,7 @@ class KategoriAsetController extends Controller
     public function edit($id)
     {
         $kategori = KategoriAset::findOrFail($id);
-        return view('admin.kategori_aset.edit', compact('kategori'));
+        return view('admin.pages.kategori_aset.edit', compact('kategori'));
     }
 
     /**
