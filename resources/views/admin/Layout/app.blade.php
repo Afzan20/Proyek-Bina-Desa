@@ -80,9 +80,10 @@
             }
 
             .whatsapp-float img {
-                width: 35px;
-                height: 35px;
+                width: 100px;
+                height: auto;
             }
+
 
             .whatsapp-float:hover {
                 transform: scale(1.1);
@@ -115,4 +116,5 @@
 
     </main>
 </body>
+
 </html>
