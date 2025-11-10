@@ -286,7 +286,7 @@
             }
 
             .whatsapp-float img {
-                width: 100px;
+                width: 25px;
                 height: auto;
             }
 
